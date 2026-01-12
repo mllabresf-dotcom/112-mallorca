@@ -31,11 +31,45 @@ const [discordUser,setDiscordUser]=useState(null);
 const [isLoadingUser,setIsLoadingUser]=useState(true);
 const [currentTime,setCurrentTime]=useState(new Date());
 
-const servicios=[
-{value:'Policía Nacional',icon:'👮‍♂️',emoji:'🚔',roleId:'1398228126919561216'},
-{value:'SAMU',icon:'🚑',emoji:'🏥',roleId:'1398274968705568878'},
-{value:'Bomberos',icon:'🚒',emoji:'🔥',roleId:'1398274299151913061'}
+const servicios = [
+  {
+    value: 'Policía Local',
+    icon: '👮‍♀️',
+    emoji: '🚓',
+    roleId: 'ROLE_ID_POLICIA_LOCAL'
+  },
+  {
+    value: 'Policía Nacional',
+    icon: '👮‍♂️',
+    emoji: '🚔',
+    roleId: '1398228126919561216'
+  },
+  {
+    value: 'Guardia Civil',
+    icon: '🛡️',
+    emoji: '🚨',
+    roleId: 'ROLE_ID_GUARDIA_CIVIL'
+  },
+  {
+    value: 'SAMU 061',
+    icon: '🚑',
+    emoji: '🏥',
+    roleId: '1398274968705568878'
+  },
+  {
+    value: 'Bomberos',
+    icon: '🚒',
+    emoji: '🔥',
+    roleId: '1398274299151913061'
+  },
+  {
+    value: 'Conservación',
+    icon: '🧰',
+    emoji: '⚙️',
+    roleId: 'ROLE_ID_CONSERVACION'
+  }
 ];
+
 
 const getPrioridad=(n)=>{
 if(n>=1&&n<=5)return{label:'BAJA',icon:'🟢',colorHex:1096065,bg:'from-green-500 to-green-700',text:'text-green-400'};
@@ -102,7 +136,7 @@ const prioridad=getPrioridad(formData.nivel);
 const timestamp=new Date();
 
 const embed={
-author:{name:"🚨 SISTEMA 112 VALENCIA",icon_url:"https://cdn-icons-png.flaticon.com/512/3588/3588592.png"},
+author:{name:"🚨 SISTEMA 112 MALLORCA",icon_url:"https://cdn-icons-png.flaticon.com/512/3588/3588592.png"},
 title:`${prioridad.icon} EMERGENCIA - PRIORIDAD ${prioridad.label}`,
 description:`╔════════════════════════════╗\n║ **${servicio.emoji} ${servicio.value.toUpperCase()}** ║\n╚════════════════════════════╝\n\n## 📋 DESCRIPCIÓN\n\`\`\`\n${formData.incidente}\n\`\`\`\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━`,
 color:prioridad.colorHex,
